@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroku &amp; Symfony</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet">
+    
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Blog</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="about.html">Acerca</a>
+                    </li>
+                  
+                    <li>
+                        <a href="contact.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/wp-and-heroku.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Deploy Symfony on</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">Update by <a href="#">Pablo Díaz</a> on August 21,2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    
+                  <p>Este es una pequeña guía para lanzar una aplicación en Heroku, lo hago porque la documentación oficial me confudió un poco y estaba en inglés.</p>
+                  
+                  <p>Primero me imagino que ya está instalado <a href="https://toolbelt.heroku.com">Heroku Toolbelt</a>.</p>
+                  <h1>Creando la aplicación</h1>
+                  <p>Se pueden crear aplicaciones mediante la terminal o mediante la plataforma de Heroku. Lo más fácil es utilizar nuestra terminal. </p>
+                  
+                 <p>Entonces nos dirigimos a la carpeta donde se encuentra el proyecto de symfony. </p>
+                <pre><code class="language-html line-numbers">
+cd ~/Desktop/symfony_demo
+                </code></pre>
+                
+                <p>Luego inicializamos un repositorio de git.</p>
+                <pre><code class="language-html line-numbers">
+                
+$ git init
+Initialized empty Git repository in /Users/usuario/Desktop/symfony_demo/.git/
+$ git commit -m "First commit"
+[master (root-commit) 069a9c7] First commit
+
+                
+                </code></pre>
+                <p>Luego creamos un archivo Procfile.</p>
+                <pre><code class="language-html line-numbers">
+$ touch Procfile
+$ echo  "web: bin/heroku-php-apache2 web/" > Procfile
+</code></pre>
+            <p>Lo añadimos al repositorio</p>
+                <pre><code class="language-html line-numbers">
+$ git add .
+$ git commit -m "Procfile for Apache and PHP"
+</code></pre>
+                
+            <p>Modificamos el archivo config_prod.yml</p>
+            <pre><code class="language-php line-numbers">
+# app/config/config_prod.yml
+monolog:
+    # ...
+    handlers:
+        # ...
+        nested:
+            # ...
+            path: "php://stderr"
+</code></pre>
+            <p>Ahora creamos la aplicación</p>
+            <pre><code class="language-html line-numbers">
+$ heroku login            
+$ heroku create
+              
+              </code></pre>
+              <p>Luego le decimos a heroku que utilice el entorno de producción</p>
+<pre><code class="language-html line-numbers">
+$ heroku config:set SYMFONY_ENV=prod
+</code></pre>
+              <p>Por último se sube a heroku</p>
+               <pre><code class="language-html line-numbers">
+$ git push heroku master
+$ heroku open
+             </pre></code>
+              
+              <p>De esta forma se abre la página donde  estará funcionado la aplicación.</p>
+              
+              <img src="img/heroku-prod.png" class="img-responsive">
+            
+
+            <h2>Ahora se configura la base de datos</h2>
+
+            <p>
+            <pre><code>
+$ heroku addons:create cleardb:ignite
+$ heroku config:get CLEARDB_DATABASE_URL
+            </pre></code>
+
+            <p>De esta forma se confirma que se ha creado la base de datos gratuita. Cabe recalcar que para tener esta base de datos es necesario confirmar la cuenta de heroku ingresando una tarjeta de crédito aunque no vayan a cobrar por esta versión.</p>
+
+            <p>Ahora hay que modificar ciertos archivos del proyecto.</p>
+            <p>Se modifica en archivo config.yml</p>
+            <pre><code class="language-yml line-numbers">
+imports:
+    - { resource: security.yml }
+    - { resource: services.yml }
+    #- { resource: parameters.yml }            
+            </pre></code>
+
+            <p>Se comenta esta línea porque se utilizará un archivo diferente para los parámetros locales y los parámetros en heroku. De esta forma el proyecto puede funcionar localmente y remotamente de forma simultánea.</p>
+
+            <p>Ahora en el archivo config_dev.yml</p>
+            <pre><code class = "language-yml line-numbers">
+#importamos el resource eliminado del config.yml
+imports:
+    - { resource: parameters.yml }
+    - { resource: config.yml }
+
+            </pre></code>
+
+            <p>Ahora se crea el archivo parameters para heroku. Creamos un archivo llamado (puede cambiar) parameters.php en la carpeta /proyectoSymfony/config/</p>
+
+            <pre><code class="language-php line-numers">
+php
+    $db = parse_url(getenv('CLEARDB_DATABASE_URL'));
+
+    $container->setParameter('database_driver', 'pdo_mysql');
+    $container->setParameter('database_host', $db['host']);
+    $container->setParameter('database_port', $db['port']);
+    $container->setParameter('database_name', substr($db["path"], 1));
+    $container->setParameter('database_user', $db['user']);
+    $container->setParameter('database_password', $db['pass']);
+    $container->setParameter('secret', getenv('SECRET'));
+    $container->setParameter('locale', 'es');
+    $container->setParameter('mailer_transport', null);
+    $container->setParameter('mailer_host', null);
+    $container->setParameter('mailer_user', null);
+    $container->setParameter('mailer_password', null);
+
+            </pre></code>
+
+            <p>Si utilizan Swift Mailer o algún otro servicio de Mailer aquí se puede configurar el servicio, al igual que el idioma predeterminado.</p>
+
+            <p>Ahora importamos este archivo en config_prod.yml</p>
+            <pre><code class="language-yml line-numbers">
+imports:
+    - { resource: parameters_production.php }
+    - { resource: config.yml }
+
+            </pre></code>
+
+            <p>Por último se actualiza el repositorio</p>
+             <pre><code class="language-html line-numbers">
+
+$ git add .
+$ git commit -m "Agregar base de datos"
+$ git push heroku master
+            </pre></code>
+
+            <p>Finalmente se actualiza la base de datos. </p>
+
+            <pre><code class="language-html">
+$ heroku run php app/console doctrine:schema:update --force
+            </pre></code>
+
+            <p>Un problema que tuve por utilizar el UserBundle de FriendOfSymfony es que tuve que instalar una extensión en heroku para que funcionara el Bundle</p>
+
+            <p>Para hacer esto es necesario agregar:  "ext-mbstring": "*", al composer.json y después composer update o composer install .</p>
+
+
+             <h1>Referencias</h1>
+              <p><a href="http://symfony.com/doc/current/cookbook/deployment/heroku.html">Symfony Docs</a></p>
+              <p><a href="https://devcenter.heroku.com/articles/getting-started-with-symfony2">Heroku Docs</a></p>
+              <p>&nbsp;</p>
+                
+              </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+   
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="http://twitter.com/fcpauldiaz">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://facebook.com/fcpauldiaz">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/fcpauldiaz?tab=repositories">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; fcpauldiaz 2015 Powered by Bootstrap</p>
+                     <p class="copyright text-muted">dia13203@uvg.edu.gt</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+    <script src="js/prism.js"></script>
+
+</body>
+
+</html>
