@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/bayern3.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1>Acerca de mí</h1>
+                       
+                        <hr class="small">
+                        <span class="subheading">This is what I do.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1>¿Qué estudio actualmente?</h1>
+                <p>Actualmente soy estudiante de ingeniería en Ciencias de la Computación y Tecnologías de la información en la Universidad del Valle de Guatemala y también estudio Contaduría Pública y Auditoría en la Universidad Da Vinci de Guatemala.</p>
+                
+                <h1>¿Qué me gusta?</h1>
+                <p>Me encanta programar y aprender cosas nuevas, creo que el único límite para aprender algo es el tiempo.</p>
+                <p>Me gusta jugar fútbol cuando tengo tiempo libre, antes jugaba en un equipo con mis amigos del colegio. Mi equipo club favorito es el Bayern Munich y mi equipo internacional favorito es Alemania. Me gusta tocar guitarra aunque no soy muy bueno y espero tener algún día un cuarto lleno de guitarras. </p>
+                
+                <h1>¿Qué quiero hacer en el futuro?</h1>
+                <p>Primero quiero graduarme de mis dos licenciaturas, después quiero estudiar una maestría en Estados Unidos y mientras haga eso quiero poner mi negocio en desarrollo de software web.</p> <p>Todavía no tengo planes para tener una familia.</p>
+                
+                <h1><a href="https://gt.linkedin.com/in/fcpauldiaz">Aquí hay más detalles</a></h1>
+          </div>
+        </div>
+    </div>
+
+    <hr>
+    {% include 'default/footer.html.twig' %}
+{% endblock %}

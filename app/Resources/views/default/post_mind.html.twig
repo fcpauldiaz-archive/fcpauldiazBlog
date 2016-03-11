@@ -1,0 +1,35 @@
+{% extends  'base.html.twig' %}
+{% block body %}
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{asset('img/mind.jpg')}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>When your mind breaks the spirit of your soul</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">Updated by <a href="#">Pablo Díaz</a> on July 8,2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                   <p> Estoy escribiendo un viernes a las 10:48 pm cuando debería estar estudiando contabilidad avanzada 1. Medio leí y creo que puedo ganar el curso con la nota mínima. Mi día de hoy empezó muy bien, tuve mi auxiliatura y califiqué los proyectos de las estudiantes de ingeniería en alimentos de primer año, fui re buena onda para calificar. Después de eso tuve que ir al trabajo a revisar que el ISR mensual y las retenciones de mis clientes estuvieran pagados, por suerte lo estaban. Después regrese a mi casa y luego a la U. Vi como mis compañeros de compu perdieron su partido de fut y no almorcé porque mis planes cambiaron. Salgo de clase temprano y un cuate me llega a hablar de algo que realmente no esperaba. Resulta que me volvió a pasar lo que me pasó hace cinco años, me desahogué un poco en twitter y ya logré ordenar un poco mejor mis pensamientos. Muchas veces tiendo a escribir lo que pienso, a mucha gente no le gusta porque nadie se entera de la verdad. Tal vez, si no lo hiciera la situación hubiera estado más tranquila pero no lo puedo evitar. Ahora solo me queda seguir. Seguir solo y seguir esperando por el día del último suspiro.</p>
+
+
+                  
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    {% include 'default/footer.html.twig' %}
+{% endblock %}

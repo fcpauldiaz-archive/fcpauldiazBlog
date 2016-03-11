@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{asset('img/astarcodebrown.png')}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>A Star implementation</h1>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>En ciencias de la computación existen una infinidad de algoritmos para resolver problemas específicos. Un cierto tipo de problemas es el de encontrar la ruta más corta para llegar de un lugar a otro. Por ejemplo: un reocorrido que tiene múltiples paradas y tiene un mismo final. La forma más fácil de representar gráficamente este tipo de problemas es a través de grafos. En el curso de investigación de operaciones se aplicó este algoritmo para problemas reales y lo se utilizaron mapas de Guatemala para poder trazar un grafo y aproximar distancias. En lo personal, creo que es bastante difícil aplicar algoritmos de este tipo en Guatemala debido a que no es común que las empresas tengan la información necesaria para aplicar los algoritmos de búsqueda.</p>
+                    
+                    <p>A continuación se muestran un caso donde se quiere llegar a cierto lugar y cada camino tiene un costo diferente de llegar.</p>
+                    <img class="img-responsive" src="{{asset('img/AStarImp1.png')}}" alt="">
+                    
+                    <p>Ahora se muestra una comparación entre los algoritmos de BFS y Dijkstra</p>
+                    <img class="img-responsive" src="{{asset('img/AStarImp2.png')}}" alt="">
+                    
+                    <p>Esto es una comparación entre Dijkstra y Greedy</p>
+                    <img class="img-responsive" src="{{asset('img/AStarImp3.png')}}" alt="">
+                    
+                    <p>Uno de los algoritmos más eficientes es A* (A Star), una combinación entre Dijkstra y Greedy</p>
+                    <p>Ahora se muestra una comparación entre los algoritmos de BFS y Dijkstra</p>
+                    
+                    <p>Se sabe que Dijktstra puede ser un algoritmo muy tardado porque está diseñado para verificar todos los nodos en un grafo y se sabe que Greedy es más eficiente porque siempre trata de llegar la meta sin evaluar posibles obstáculos. La combinación de estos dos permite tener un algoritmo que puede evadir obstáculos sin entrar a ellos y no evaluar todos los nodos.</p>
+                    
+                    <p>Así se ve una parte de mi implementación</p>
+                     <img class="img-responsive" src="{{asset('img/astar.png')}}" alt="">
+                     <span class="caption text-muted">Donde las casillas grises son los nodos no evalauados, las amarillas el camino encontrado y las rojas las casillas evaluadas.</span>
+                     
+                     <p>Algunas recomendaciones para la implementación es utilizar PriorityQueue para los nodos evaluados y HashMap para los nodos por evaluar. De esta forma se reduce el O(n) del algoritmo.El código completo lo pueden encontrar en mi github.</p>
+
+                    
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    {% include 'default/footer.html.twig' %}
+{% endblock %}

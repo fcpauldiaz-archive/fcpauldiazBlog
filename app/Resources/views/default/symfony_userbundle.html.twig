@@ -1,0 +1,652 @@
+ {% extends 'base.html.twig' %}
+{% block body %}
+
+ <header class="intro-header" style="background-image: url({{asset('img/symfonyLogo.png')}})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>La forma correcta </h1>
+                        <h1>de crear usuarios </h1>
+                        <h1>en symfony</h1>
+                        <p>&nbsp;</p>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">Posted by <a href="#">Pablo Díaz</a> on July 15,2015</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <!--Begin Content -->
+                	<h2 class="section-heading">El User Bundle</h2>
+                
+                    <p>La mayoría de sistemas web necesitan un sistema de autenticación, registro y perfil de usuarios. En esta ocasión quiero compartir una forma de hacerlo fácil y reutilizable para otros proyectos en symfony. Este material está dirigido a personas que ya posean un poco de conocimiento básico de cómo funciona symfony.</p>
+                    <p>Una vez ya tengan instalado symfony y composer, iniciamos con el proyecto.</p>
+                    
+                    <!-- Div for code -->
+                   <div class="panel panel-primary">
+                      <div class="panel-heading">1. Crear el proyecto</div>
+                          <div class="panel-body">
+                            symfony new proyecto 2.7
+                          </div>
+                  </div>
+                 <!-- End Div for Code -->
+                
+                
+                 <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">2. Instalar <a href ="https://github.com/FriendsOfSymfony">Friend of Symfony</a></div>
+                          
+                          <div class="panel-body">
+                            composer require friendsofsymfony/user-bundle
+                          </div>
+                </div>
+                    
+                
+                 <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">3. Crear el UserBundle</div>
+                          
+                          <div class="panel-body">
+                            php app/console generate:bundle
+                            
+                            <img src="{{ asset('img/gen-bundle.png')}}" class="img-responsive" >
+                             <img src="{{ asset('img/gen-bundle2.png')}}" class="img-responsive" >
+                          </div>
+                </div>
+                <!-- End Div for Code -->
+                    
+                    
+                    <p>Ahora habilitamos el bundle en el AppKernel.php</p>
+                       
+                   
+                   <!-- Begin collapasable panler -->               
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          4. Habilitar el Bundle
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                       <img class="img-responsive" src="{{ asset('img/habilitar-bundle.png')}}" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                         En caso de que salga el problema "Warning: date_default_timezone_get()" 
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                      <p>     public function __construct($environment, $debug)</p>
+                                   <p> {</p>
+                                      <p>  date_default_timezone_set('America/Guatemala');</p>
+                                      <p>  parent::__construct($environment, $debug);</p>
+                                   <p> }</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                <!-- End Collapsable panel -->          
+                    
+          		 
+                 <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">5. Configurar los parámetros</div>
+                          
+                  <div class="panel-body">
+                     <p> En parameters.yml</p>
+                            
+                    <img src="{{ asset('img/parameters.png')}}" class="img-responsive" >
+                    <p> En config.yml</p>
+                    <img src="{{ asset('img/translator.png')}}" class="img-responsive">
+                    <img src="{{ asset('img/fos_user.png')}}" class="img-responsive">
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                
+                
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">6. Crear clase Usuario y configurarla</div>
+                          
+                  <div class="panel-body">
+                     <p> Primero creamos la clase con: php app/console doctrine:generate:entity </p>
+                     <p> Escogemos formato yml y creamos un campo de nombre desde el generador de symfony.</p>
+                     <p>&nbsp;</p>
+                     <p> Ahora importamos los siguientes bundles en src/UsuarioBundle/Entity/Usuario.php</p>
+                     <img src="{{ asset('img/import-user.png')}}" class="img-responsive">
+                     <p>&nbsp;</p>
+                     <p> Se hereda de la clase BaseUser de FriendOfSymfony, se define el nombre de tabla (Usuarios) y se utiliza Assert para validar el campo de nombre</p>
+                     <p>Observación: el atributo id tiene que ser obligatoriamente protected</p>
+                     <p>El generador de entidades se encargará de colocar los métodos SET y GET de los atributos.</p>
+                     <img src="{{ asset('img/user-class.png')}}" class="img-responsive">
+                            
+                  
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                
+                <p>&nbsp;</p>
+                <!-- Begin Alert -->
+                <div class="alert alert-warning" role="alert">
+  					<a href="http://fcpauldiaz.github.io/plataforma_virtual" class="alert-link">Pueden encontrar el código en github.</a>
+				</div>
+                <!-- End Alert -->
+                   
+                    
+                 <!-- Div for code -->
+                <div class="panel panel-primary">
+                	<div class="panel-heading">7. Configurar la ruta de seguridad en app/config/security.yml</div>
+                         <div class="panel-body">
+<pre><code class="language-yaml line-numbers">
+security:
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+    access_control:
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN</code></pre>
+
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                    
+                 <!-- Div for code -->
+                <div class="panel panel-primary">
+                	<div class="panel-heading">8. Registrar las rutas definidas de symfony</div>
+                         <div class="panel-body">
+<pre><code class="language-yaml line-numbers">
+#Colocar esto en src/UserBundle/Resources/config/routing.yml
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+</code></pre>
+<pre><code class="language-yaml line-numbers">
+#En app/config/routing.yml tendremos esta ruta, de esta forma las rutas se encuentran dentro del bundle y se vuelve portable
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+</code></pre>
+
+                    </div>
+                </div>
+                <!-- End Div for Code -->             
+                
+                 <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">10. Definir la ruta principal del proyecto</div>
+                          
+                  <div class="panel-body">
+                     <p>Modificamos el archivo DefaultController.php en src/AppBundle/DefaultController para definir la página principal del proyecto </p>
+<pre><code class="language-php line-numbers">
+
+
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class DefaultController extends Controller
+{
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function indexAction()
+    {
+        return $this->render('UserBundle:Default:index.html.twig');
+    }
+}
+</code></pre>
+<p>Nótese que sigue un patrón definido Bundle:Controller:Action, esto le permite al Routing hallar el controlador especificado, automáticamente Routing resuelve la ubicación del Bundle, el controlador y la acción, sin necesidad de definir los sufijos “Controller” y “Action” correspondientes al controlador y acción. El archivo index.html.twig lo pueden encontrar en el repositorio de github.</p>
+
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                    
+                 <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">11. La primera prueba</div>
+                          
+                  <div class="panel-body">
+                     <p>Ahora corremos el servidor con: php app/console server:run</p>
+                     <p>En la dirección http://localhost:8000/login nos muestra la interfaz de autenticación </p>
+                     <img src ="{{ asset('img/login.png')}}" class="img-responsive" >
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                
+                <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">12.1 Incluir css, javascript, fonts y demás archivos estáticos</div>
+                          
+               	  <div class="panel-body">
+                    <p>Lo más fácil para crear una página web decente es utilizar una plantilla por parte de <a href="http://getbootstrap.com" target="new">getBooststrap</a></p>
+                     <p>Una vez definida una plantilla bootstrap, primero incluimos los archivos estáticos en la dirección proyecto/web</p>
+                     
+                     <img src ="{{ asset('img/web-dir.png')}}" class="img-responsive" >
+                     
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                
+                <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">12.2 Primero se define el layout.</div>
+                          
+               	  <div class="panel-body">
+                   <p>Para importar los javascript, css, imágenes y demás archivos se pueden importar de la siguiente forma</p>
+                   <img src="img/assetic.png" class="img-responsive">
+                   <p>&nbsp;</p>
+                   <p>Ahora la parte más importante del layout.html.twig es definir el espacio donde se pondrán los formularios</p>
+                   <p>El archivo debería estar ubicado en src/UserBundle/Resource/views.</p>
+                   <p>A continuación tienen un ejemplo de como se puede poner. Cualquier elemento encerrado en {} es lenguaje de twig.</p>
+{% raw %}
+<pre><code class="language-twig line-numbers">
+div style = "color: #ffffff">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                
+            {% endif %}
+        /div>
+
+        {% for type, messages in app.session.flashBag.all %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+      
+    <!-- Start Login Section -->
+    
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+</code></pre>
+                   
+           <p>Entre los elemento de fos_user_content se pondrán todos los formularios.</p>
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                {% endraw %}
+                 
+                <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">12.3 Ahora el archivo login.html.twig.</div>
+                          
+               	  <div class="panel-body">
+                   <p>Ahora hay que modificar el archivo login ubicado en src/UserBundle/Resource/views/Security</p>
+                   <p>Debido a que layout es nuestra base tenemos que heredar sus atributos para poder utilizarlos.</p>
+                   <img src="img/login-extend.png" class="img-responsive">
+                   <p>Luego básicamente solo hay que modificar el archivo, dejando los elementos importantes que ya tiene el archivo original de FOSUserBundle hasta que quede como se quiere.</p>
+                   <img src="{{ asset('img/login-2.png')}}" class="img-responsive">
+      
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+               
+                 
+                <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">13. Override a los formularios.</div>
+                          
+               	  <div class="panel-body">
+                  <p>Primero hay que realizar un paso que faltaba y se puede hacer después de crear la clase Usuario</p>
+                  <p>Es necesario sincronizar la base de datos con el siguiente comando: php app/console doctrine:schema:update --dump-sql (para asegurarse que se crean los campos deseados) y después php app/console doctrine:schema:update --force
+                  
+                  
+                   <p>Ahora toca realizar la parte de registrar nuevos usuarios, pero para realizar hay que modificar los formularios originales de friend of symfony porque agregamos nuevos campos.</p>
+                   <p>Creamos el archivo RegistrationFormType.php en UserBundle/Form/Type </p>
+                   <p>Primero hay que heredar el formulario de fos y agregar campos nuevos.</p>
+                   <img src="{{ asset('img/form.png')}}" class="img-responsive">
+                   <p>Ahora modificamos el archivo en src/UserBundle/Resources/config/services.yml</p>
+                   <img src="{{asset('img/user-service.png')}}" class="img-responsive">
+                   <p>Por último modificamos el archivo config.yml ubicado en app</p>
+                   <img src="{{ asset('img/fos-user.png')}}" class="img-responsive">
+                   <p> De esta forma el formulario queda con la cantidad de campos deseados pero todavía falta modificar el archivo register_content.html.twig</p>
+                   <img src="{{ asset('img/register-1.png')}}" class="img-responsive">
+                   <p>Esto puede ser un poco tedioso pero que se mire mejor visualmente, lo mejor es colocar campo por campo en el html</p>
+                   <p>Primero se define donde inicia  y termina el formulario en register_content.html.twig con las siguientes instrucciones.</p>
+                   {% raw %}
+                    <pre><code class="language-twig line-numbers">
+                    
+                     {{form_start(form)}} 
+                     "{{form_end(form)}}
+
+                    </code></pre>
+
+                    <p>Ahora agregamos columna por columna y definimos la clase y el placeholder.</p>
+                    <p>Se puede tener control sobre casi todo, para saber más, recomiendo revisar la documentación oficial de symfony sobre formularios.</p>
+<pre><code class="language-twig line-numbers">
+                     
+{{form_row(form.nombreCompleto,{'attr': {'class': 'form-control','placeholder':'Nombre Completo'}})}}
+ </code></pre>                  
+{% endraw %}
+ 					<p>Finalmente así queda el formulario</p>
+                    <img src="{{ asset('img/register-2.png')}}" class="img-responsive">
+                  {% raw %}
+                  
+                             
+                  </div>
+                </div>
+                <!-- End Div for Code -->
+                
+                                <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">14. Ahora se desea modificar el correo de confirmación.</div>
+                          
+               	  <div class="panel-body">
+                   <p>Por defecto friend of symfony enviará un correo de confirmación en texto plano.</p>
+                   <p>Debido a que nuestro sistema será utilizado se desea que tenga un estilo agradable a la vista y para eso es necesario enviar el correo en formato HTML.</p>
+                   <p>Entonces, primero es necesario crear un formato de html para enviar el correo, una vez se tenga todo ya visualmente agradble, lo incluimos en nuestro proyecto de symfony.</p>
+                   <p>Como se desean incluir imágenes en nuestro nuevo archivo html, tendremos que modificar el default Mailer de FOS. Para eso copiamos el archivo de friendofsymfony Mailer/TwigSwiftMailer y lo copiamos en UserBundle/Mailer/CustomTwigSwiftMailer. </p>
+                   <p>Lo modificamos hasta que quede como el siguiente ejemplo.</p>
+<pre><code class="language-php line-numbers">
+
+
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony http://friendsofsymfony.github.com
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace UserBundle\Mailer;
+
+use FOS\UserBundle\Model\UserInterface;
+use FOS\UserBundle\Mailer\TwigSwiftMailer as BaseMailer;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use FOS\UserBundle\Mailer\MailerInterface;
+
+
+/**
+ * 
+ * Form overriden by  @author Pablo diaz <dia13203@uvg.edu.gt>
+ * @author Christophe Coevoet <stof@notk.org>
+ */
+class CustomTwigSwiftMailer implements MailerInterface
+{
+    protected $mailer;
+    protected $router;
+    protected $twig;
+    protected $parameters;
+
+    public function __construct(\Swift_Mailer $mailer, UrlGeneratorInterface $router, \Twig_Environment $twig, array $parameters)
+    {
+        $this->mailer = $mailer;
+        $this->router = $router;
+        $this->twig = $twig;
+        $this->parameters = $parameters;
+    }
+
+    public function sendConfirmationEmailMessage(UserInterface $user)
+    {
+        $template = $this->parameters['template']['confirmation'];
+        $url = $this->router->generate('fos_user_registration_confirm', array('token' => $user->getConfirmationToken()), true);
+        $context = array(
+            'user' => $user,
+            'confirmationUrl' => $url
+        );
+
+        $this->sendMessage($template, $context, $this->parameters['from_email']['confirmation'], $user->getEmail());
+    }
+
+    public function sendResettingEmailMessage(UserInterface $user)
+    {
+        $template = $this->parameters['template']['resetting'];
+        $url = $this->router->generate('fos_user_resetting_reset', array('token' => $user->getConfirmationToken()), true);
+        $context = array(
+            'user' => $user,
+            'confirmationUrl' => $url
+        );
+        $this->sendMessage($template, $context, $this->parameters['from_email']['resetting'], $user->getEmail());
+    }
+
+    /**
+     * @param string $templateName
+     * @param array  $context
+     * @param string $fromEmail
+     * @param string $toEmail
+     */
+    protected function sendMessage($templateName, $context, $fromEmail, $toEmail)
+    {
+        //new instance
+        $message = \Swift_Message::newInstance();
+        $context = $this->twig->mergeGlobals($context);//merge context
+        $template = $this->twig->loadTemplate($templateName);
+        //espacio para agregar imágenes
+        $context['image_src'] = $message->embed(\Swift_Image::fromPath('images/email_header.png'));//attach image 1
+        $context['fb_image'] = $message->embed(\Swift_Image::fromPath('images/fb.gif'));//attach image 2
+        $context['tw_image'] = $message->embed(\Swift_Image::fromPath('images/tw.gif'));//attach image 3
+        $context['right_image'] = $message->embed(\Swift_Image::fromPath('images/right.gif'));//attach image 4
+        $context['left_image'] = $message->embed(\Swift_Image::fromPath('images/left.gif'));//attach image 5
+        $subject = $template->renderBlock('subject', $context);
+        $textBody = $template->renderBlock('body_text', $context);
+        $htmlBody = $template->renderBlock('body_html', $context);
+        
+       
+        $message
+            ->setSubject($subject)
+            ->setFrom($fromEmail)
+            ->setTo($toEmail);
+
+        if (!empty($htmlBody)) {
+            $message->setBody($htmlBody, 'text/html')
+                ->addPart($textBody, 'text/plain');
+        } else {
+            $message->setBody($textBody);
+        }
+
+        $this->mailer->send($message);
+    }
+}
+</code></pre>                   
+                  
+                   <p>Ahora es necesario crear un archivo llamado registration.email.twig en UserBundle/Resources/views de la siguiente forma</p>
+<pre><code class="language-twig line-numbers">
+{% block subject %}
+{% autoescape false %}
+{{ 'registration.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endautoescape %}
+{% endblock %}
+
+
+
+{% block body_html %}
+{% include 'UserBundle:Registration:email.html.twig' %}
+{% endblock %}
+</code></pre>
+				<p>La primera parte de este archivo sirve para definir el sujeto del email y la segunda parte para el cuerpo del mensaje</p>
+                <p>Ahora creamos el archivo email.html.twig en el mismo lugar y colocamos la plantilla html creada anteriormente</p>
+                <p>En esta plantilla la parte importante será la siguiente:</p>
+<pre><code class="language-twig line-numbers">
+{% block body_text %}
+{% autoescape 'html' %}
+<p>Hola {{user.nombreCompleto}}! </p>
+<p> Para completar la validación de tu cuenta - por favor visita el siguiente < a href="{{confirmationUrl}}">Link de Activación</ a>< /p>
+<p>Atentamente,</p>
+<p>el Equipo.</p>
+
+{% endautoescape %}
+{% endblock %}
+</code></pre>
+				<p>Para adjuntar imágenes</p>
+<pre><code class="language-twig line-numbers">
+#el nombre depende a lo definido en el custom mailer.
+< img src="{{image_src}}">
+</code></pre>
+				<p>Ahora es necesario agregar el custom mailer al proyecto.</p>
+                <p>Primero agregándolo como servicio en UserBundle/Resources/config/services.yml</p>
+<pre><code class="language-yaml line-numbers">
+services:
+    user_bundle.registration.form.type:
+        class: UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: user_registration}
+    fos_mail.custom_mailer:
+        class: UserBundle\Mailer\CustomTwigSwiftMailer
+        public: false
+        arguments:
+            - '@mailer'
+            - '@router'
+            - '@twig'
+            - template:
+                confirmation: %fos_user.registration.confirmation.template%
+                resetting: %fos_user.resetting.email.template%
+              from_email:
+                confirmation: %fos_user.registration.confirmation.from_email%
+                resetting: %fos_user.resetting.email.from_email%  
+</code></pre>      	
+				<p>Ahora lo agregamos en el config.yml</p>
+<pre><code class="language-yaml line-numbers">
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: UserBundle\Entity\Usuario
+    service:
+        mailer: fos_mail.custom_mailer
+    registration:
+        form:
+            type:  user_registration
+        confirmation:
+            enabled:    true # change to true for required email confirmation
+            template:   UserBundle:Registration:registration.email.twig       
+</code></pre>
+      {% endraw %}
+			<p>Finalmente, queda de la siguiente forma</p>
+            <img src="{{ asset('img/email-confirm.png')}}" class="img-responsive">               
+      {% raw %}
+                             
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                    
+                     <p>&nbsp;</p>
+                  <!-- Div for code -->
+                <div class="panel panel-primary">
+                
+                      <div class="panel-heading">15. Recapitulando</div>
+                          
+                  <div class="panel-body">
+                    <p>Hasta el momento ya tenemos el inicio de sesión y el registro de usuarios con confirmación al correo</p>
+                    <p>Ahora lo que sigue es la recuperación de la contraseña con correo en HTML</p>
+                    <p>Primero el link para la recuperación de la contraseña debería ser hacia {{ path('fos_user_resetting_request') }}</p>
+                    <p>El segundo paso es configurar el config.yml</p>
+ <pre><code class="language-yaml line-numbers">
+  resetting:
+        token_ttl: 86400
+        email:
+            from_email:
+                address:        noreply@elearn.com
+                sender_name:    In- Learn Platform
+            template:   UserBundle:Resetting:resetting.email.twig
+        form:
+            type:               fos_user_resetting
+</code> </pre>
+          {% endraw %}
+ 					<p>Ahora es necesario configurar el correo a para la recuperación</p>
+                    <p>Como se puede notar se ha definido el archivo resetting.email.twig ubicado en UserBundle/Resources/Resetting/views como plantilla de envío.</p>
+                    <p>Este archivo es muy parecido al de registration.email.twig</p>
+                    <img src="{{ asset('img/reset-email.png')}}" class="img-responsive">                    
+                    <p>Ahora en el archivo ubicado en UserBundle/Resources/Resetting/views crean el archivo reset.html.twig para mandar el correo de recuperación de contraseña</p>
+                    
+                    <p>Al igual que el correo de registro, la parte importante de esta plantilla es la siguiente:</p>
+                    <img src="{{ asset('img/master-reset.png')}}" class="img-responsive">
+                    
+                    </div>
+                </div>
+                <!-- End Div for Code -->
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </article>
+    
+
+    <hr>
+    {% include 'default/footer.html.twig' %}
+{% endblock %}
